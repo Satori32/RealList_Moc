@@ -64,7 +64,7 @@ public:
 		return true;
 	}
 
-	T& operator [](double In) {
+	T& operator [](std::intmax_t In) {
 		X += In;//why this need?
 		return L[(X / M)];
 	}
@@ -80,7 +80,7 @@ public:
 	//typedef std::map <double, T > List_T;//world spec thing holder
 	typedef std::map <std::intmax_t, T > List_T;//refine and detune
 	bool forWard() {
-		X += M
+		X += M;
 		return true;
 	}
 	bool BackWard() {
@@ -96,7 +96,7 @@ public:
 		return true;
 	}
 
-	T& operator [](double In) {
+	T& operator [](std::intmax_t In) {
 		return L[(X / M)];
 	}
 
@@ -106,9 +106,16 @@ protected:
 	std::uintmax_t X = 0;
 };
 int main() {
-	List<int> L;
+	List<int> LA;
 
-	std::cout << L[10.5] << std::endl;
+	std::cout << LA[10.5] << std::endl;
 
+	List2<int> LB;
+	std::cout << LB[10.5] << std::endl;
+
+	ListYaki<int> LC;//little better fined list.
+	LC[10.5] = 10;
+	std::cout << LC[10.5] << std::endl;
+	std::cout << LC[10] << std::endl;
 	return 0;
 }
